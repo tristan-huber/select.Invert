@@ -2,7 +2,7 @@
 
 # select.Invert
 
-![](/project.svg)
+![](/project.png)
 
 ## Inputs
 
