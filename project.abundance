@@ -13,6 +13,14 @@
   "topLevel": true,
   "allAtoms": [
     {
+      "atomType": "Input",
+      "x": 0.0231,
+      "y": 0.14,
+      "uniqueID": "id-103",
+      "name": "selection",
+      "type": "geometry"
+    },
+    {
       "atomType": "Output",
       "x": 0.98,
       "y": 0.5,
@@ -36,16 +44,8 @@
         }
       ],
       "interpreterVersion": 1,
-      "code": "// select.Not\nfunction run(a1: Assembly) {\n  return a1.onLeafs((leaf) => {\n    if (leaf.selection) {\n      leaf.selection.part = !leaf.selection?.part\n    }\n    if (!leaf.is3D()) {\n      return leaf;\n    }\n    if (leaf.selection == undefined) {\n      leaf.selection = { edges: [], faces: [], part: true }\n    }\n    const initialEdges = leaf.selection.edges ?? []\n    const initialFaces = leaf.selection.faces ?? []\n\n    leaf.selection.edges = [...new Array(leaf.geometry.edges.length).keys()].filter((i) => !initialEdges.includes(i))\n    leaf.selection.faces = [...new Array(leaf.geometry.faces.length).keys()].filter((i) => !initialFaces.includes(i))\n    return leaf;\n  })\n}",
-      "compiledCode": "\"use strict\";\n// select.Not\nfunction run(a1) {\n    return a1.onLeafs((leaf) => {\n        if (leaf.selection) {\n            leaf.selection.part = !leaf.selection?.part;\n        }\n        if (!leaf.is3D()) {\n            return leaf;\n        }\n        if (leaf.selection == undefined) {\n            leaf.selection = { edges: [], faces: [], part: true };\n        }\n        const initialEdges = leaf.selection.edges ?? [];\n        const initialFaces = leaf.selection.faces ?? [];\n        leaf.selection.edges = [...new Array(leaf.geometry.edges.length).keys()].filter((i) => !initialEdges.includes(i));\n        leaf.selection.faces = [...new Array(leaf.geometry.faces.length).keys()].filter((i) => !initialFaces.includes(i));\n        return leaf;\n    });\n}\n"
-    },
-    {
-      "atomType": "Input",
-      "x": 0.0231,
-      "y": 0.3485714285714286,
-      "uniqueID": "id-103",
-      "name": "selection",
-      "type": "geometry"
+      "code": "// select.Not\nfunction run(a1: Assembly) {\n  return a1.onLeafs((leaf) => {\n    if (leaf.selection) {\n      leaf.selection.part = !leaf.selection?.part\n    }\n    if (!leaf.is3D()) {\n      return leaf;\n    }\n    if (leaf.selection == undefined) {\n      leaf.selection = { edges: [], faces: [], part: true }\n    }\n    const initialEdges = leaf.selection.edges ?? []\n    const initialFaces = leaf.selection.faces ?? []\n\n    leaf.selection.edges = [...new Array(leaf.geometry.edges.length).keys()].filter((i) => !initialEdges.includes(i))\n    leaf.selection.faces = [...new Array(leaf.geometry.faces.length).keys()].filter((i) => !initialFaces.includes(i))\n    return leaf;\n  })?.skipDisjointPostprocess()\n}",
+      "compiledCode": "\"use strict\";\n// select.Not\nfunction run(a1) {\n    return a1.onLeafs((leaf) => {\n        if (leaf.selection) {\n            leaf.selection.part = !leaf.selection?.part;\n        }\n        if (!leaf.is3D()) {\n            return leaf;\n        }\n        if (leaf.selection == undefined) {\n            leaf.selection = { edges: [], faces: [], part: true };\n        }\n        const initialEdges = leaf.selection.edges ?? [];\n        const initialFaces = leaf.selection.faces ?? [];\n        leaf.selection.edges = [...new Array(leaf.geometry.edges.length).keys()].filter((i) => !initialEdges.includes(i));\n        leaf.selection.faces = [...new Array(leaf.geometry.faces.length).keys()].filter((i) => !initialFaces.includes(i));\n        return leaf;\n    })?.skipDisjointPostprocess();\n}\n"
     }
   ],
   "allConnectors": [
